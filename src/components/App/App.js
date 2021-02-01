@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import logo from '../../../src/logo.svg';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
 
@@ -16,16 +15,21 @@ const business = {
     reviewCount: 90
 };
 
-const businesss = [business, business, business, business, business, business];
+const businessArr = [business, business, business, business, business, business];
 
-function App() {
-    return (
-        <div className="App">
-            <h1>ravenous</h1>
-            <SearchBar />
-            <BusinessList businesses={ businesss } />
-        </div>
-    );
+class App extends React.Component {
+    searchYelp(term, location, sortBy) {
+        console.log('Searching ' + location + ' for ' + term + ', ' + sortBy);
+    }
+    render() {
+        return (
+            <div className="App">
+                <h1>ravenous</h1>
+                <SearchBar searchYelp = { this.searchYelp }/>
+                <BusinessList businesses={ businessArr } />
+            </div>
+        );
+    }
 }
 
 export default App;
